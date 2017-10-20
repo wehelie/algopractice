@@ -33,29 +33,45 @@ myStack.until(7)
 What's the time complexity?
  */
 
-function Stack(capacity) {
-  // implement me...
-}
+ function Stack(capacity) {
+   this._capacity = capacity || Infinity;
+   this._store = {};
+   this._count = 0;
+ }
 
-Stack.prototype.push = function(value) {
-  // implement me...
-};
-// Time complexity:
+ Stack.prototype.push = function(value) {
+   if (this._count < this._capacity) {
+     this._store[this._count++] = value;
+     console.log(this._store);
+     return this._count;
+   }
 
-Stack.prototype.pop = function() {
-  // implement me...
-};
-// Time complexity:
+   return 'Max capacity already reached. Remove element before adding a new one.';
+ };
 
-Stack.prototype.peek = function() {
-  // implement me...
-};
-// Time complexity:
 
-Stack.prototype.count = function() {
-  // implement me...
-};
-// Time complexity:
+ Stack.prototype.pop = function() {
+   if (this._count === 0) {
+     return 'No elements in Stack';
+   }
+   var value = this._store[--this._count];
+   delete this._store[this._count];
+   if (this._count < 0) {
+     this._count = 0;
+   }
+
+   return value;
+ };
+
+
+ Stack.prototype.peek = function() {
+   return this._store[this._count - 1];
+ };
+
+
+ Stack.prototype.count = function() {
+   return this._count;
+ };
 
 
 /*
