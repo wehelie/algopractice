@@ -37,7 +37,7 @@ What's the time complexity?
    this._capacity = capacity || Infinity;
    this._store = {};
    this._count = 0;
- }
+ };
 
  Stack.prototype.push = function(value) {
    if (this._count < this._capacity) {
